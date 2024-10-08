@@ -6,28 +6,27 @@
 [![Lighthouse CI](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lighthouse.yml)
 
 
-![Denkmalliste Stadt Flensburg](https://raw.githubusercontent.com/oklabflensburg/open-biotope-map/main/screenshot_biotopkarte.webp)
+![Screenshot der interaktiven Biotopkarte](https://raw.githubusercontent.com/oklabflensburg/open-biotope-map/main/screenshot_biotopkarte.webp)
 
 _Haftungsausschluss: Dieses Repository und die zugehörige Datenbank befinden sich derzeit in einer Beta-Version. Einige Aspekte des Codes und der Daten können noch Fehler enthalten. Bitte kontaktieren Sie uns per E-Mail oder erstellen Sie ein Issue auf GitHub, wenn Sie einen Fehler entdecken._
 
 
 ## Hintergrund
 
-Die Idee, Denkmäler und deren Merkmale auf einer digitalen Karte anzuzeigen, ist während eines Spaziergangs durch Flensburg entstanden. Auf dem Open Data Portal Schleswig-Holstein stellt das Landesamt für Denkmalpflege Schleswig-Holstein eine Denkmalliste zur Verfügung, jedoch leider ohne Angabe der Koordinaten. Wir haben uns entschieden, dies zu ändern und einen Prototypen der Öffentlichkeit zugänglich zu machen, indem wir die Einträge mit den Gebäudekoordinaten ergänzen.
+Diese kleine interaktive Biotopkarte ist nach einem Spaziergang durch Salzwiesen und an der Steilküste in Holnis entstanden. Nach mehrfacher Begehung der einzigartigen Landschaft an der Ostsee entstand der Wunsch die Vielfalt der vielen Biotope in Schleswig-Holstein digital erkundbar zu machen.
 
 
 ## Datenquelle
 
-Das Landesamt für Denkmalpflege Schleswig-Holstein prüft anhand der gesetzlich vorgegebenen Kriterien den besonderen Wert eines Kulturdenkmals und legt die Maßstäbe, die Methodik für die Erfassung und Pflege sowie den Schutzumfang der Kulturdenkmale fest. Die erhobenen Daten der Denkmalliste werden im Open Data Portal des Landes Schleswig-Holstein zum Download angeboten. Die Kartendarstellung wurde von engagierten Einwohner:innen und ehrenamtlichen Mitgliedern des OK Lab Flensburgs entwickelt.
+Die zugrundeliegenden Daten der Biotopkartierung stellt das Landesamt für Umwelt im Open-Data Portal Schleswig-Holstein zum Download zur Verfügung. Die Biotopkarte wurde von engagierten ehrenamtlichen Mitgliedern des OK Lab Flensburgs entwickelt.
 
 
-## Mitmachen
+## Aktualität
 
-Du kannst jederzeit ein Issue auf GitHub öffnen oder uns über oklabflensburg@grain.one schreiben
+Die Aktualität der zugrundeliegenden Daten entnehmen Sie bitte der Projektseite.
 
 
-
-## Prerequisite
+## Setup
 
 Install system dependencies and clone repository
 
