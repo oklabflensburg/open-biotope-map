@@ -37,18 +37,33 @@ function renderBiotopeMeta(data) {
 
   map.fitBounds(currentLayer.getBounds())
 
-  let biotopeMeta = ''
+  let biotopeType = ''
+  let detailOutput = ''
 
   if (data['designation'].length > 1) {
-    biotopeMeta = `<h3 class="text-xl font-bold px-3">${data['designation']}</h3>`
+    biotopeType = data['designation']
   }
 
-  document.querySelector('#biotopeMeta').innerHTML = biotopeMeta
+  detailOutput += `<li><strong>${data['code']}</strong><br>${biotopeType}</li>`
+
+  document.querySelector('#detailList').innerHTML = detailOutput
+  document.querySelector('#sidebar').classList.remove('hidden')
+  document.querySelector('#sidebar').classList.add('absolute')
+  document.querySelector('#about').classList.add('hidden')
+  document.querySelector('#sidebarContent').classList.remove('hidden')
 }
 
 
 function cleanBiotopeMeta() {
-  document.querySelector('#biotopeMeta').innerHTML = ''
+  if (currentLayer) {
+    map.removeLayer(currentLayer)
+  }
+
+  document.querySelector('#detailList').innerHTML = ''
+  document.querySelector('#sidebar').classList.add('hidden')
+  document.querySelector('#sidebar').classList.remove('absolute')
+  document.querySelector('#about').classList.remove('hidden')
+  document.querySelector('#sidebarContent').classList.add('hidden')
 }
 
 
