@@ -28,7 +28,7 @@ function renderBiotopeMeta(data) {
   const feature = JSON.parse(data['geojson'])
 
   currentLayer = L.geoJSON(feature, {
-    style:  {
+    style: {
       'color': '#333',
       'weight': 2,
       'fillOpacity': 0.1
@@ -63,7 +63,8 @@ function fetchBiotopeMeta(lat, lng) {
     }).catch(function (error) {
       cleanBiotopeMeta()
     })
-  } catch {
+  }
+  catch {
     cleanBiotopeMeta()
   }
 }
@@ -108,9 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
     maxNativeZoom: 20
   }).addTo(map)
 
-  map.on('click', function(e) {
-    let lat = e.latlng.lat
-    let lng = e.latlng.lng
+  map.on('click', function (e) {
+    const lat = e.latlng.lat
+    const lng = e.latlng.lng
 
     fetchBiotopeMeta(lat, lng)
   })
@@ -126,21 +127,22 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
 
-  let layers = { 
+  const layers = {
     'layer1': L.tileLayer('https://tiles.oklabflensburg.de/nksh/{z}/{x}/{y}.png', {
       opacity: 0.7,
-      maxZoom: 20, 
+      maxZoom: 20,
       maxNativeZoom: 20
-    })  
+    })
   }
 
-  window.toggleLayer = function(element) {
-    let layerName = element.id
-    let layer = layers[layerName]
+  window.toggleLayer = function (element) {
+    const layerName = element.id
+    const layer = layers[layerName]
 
     if (element.checked && !map.hasLayer(layer)) {
       map.addLayer(layer)
-    } else if (map.hasLayer(layer)) {
+    }
+    else if (map.hasLayer(layer)) {
       map.removeLayer(layer)
     }
   }
