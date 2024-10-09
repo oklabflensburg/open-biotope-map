@@ -37,14 +37,31 @@ function renderBiotopeMeta(data) {
 
   map.fitBounds(currentLayer.getBounds())
 
-  let biotopeType = ''
   let detailOutput = ''
 
   if (data['designation'].length > 1) {
-    biotopeType = data['designation']
+    detailOutput += `<li><strong>${data['code']}</strong><br>${data['designation']}</li>`
   }
 
-  detailOutput += `<li><strong>${data['code']}</strong><br>${biotopeType}</li>`
+  if (data['description'].length > 1) {
+    detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
+  }
+
+  if (data['valuable_biotope'].length > 1) {
+    detailOutput += `<li><strong>Wertbiotop</strong><br>${data['valuable_biotope']}</li>`
+  }
+
+  if (data['mapping_origin'].length > 1) {
+    detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}</li>`
+  }
+
+  if (data['place_name'].length > 1) {
+    detailOutput += `<li><strong>Gemeinde</strong><br>${data['place_name']}</li>`
+  }
+
+  if (data['shape_area'] > 0) {
+    detailOutput += `<li><strong>Fläche</strong><br>${data['shape_area']}</li>`
+  }
 
   document.querySelector('#detailList').innerHTML = detailOutput
   document.querySelector('#sidebar').classList.remove('hidden')
