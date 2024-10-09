@@ -43,7 +43,7 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>${data['code']}</strong><br>${data['designation']}</li>`
   }
 
-  if (data['description'].length > 1) {
+  if (data['description'] !== null) {
     detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
   }
 
