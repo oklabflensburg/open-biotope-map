@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('#sidebarCloseButton').addEventListener('click', function (e) {
     e.preventDefault()
 
-    document.querySelector('#sidebar').classList.add('sm:h-screen')
-    document.querySelector('#sidebar').classList.remove('absolute', 'h-screen')
+    document.querySelector('#sidebar').classList.add('sm:h-dvh')
+    document.querySelector('#sidebar').classList.remove('absolute', 'h-dvh')
     document.querySelector('#sidebarCloseWrapper').classList.add('hidden')
 
     history.replaceState({ screen: 'home' }, '', '/')
@@ -173,8 +173,8 @@ window.onload = () => {
 // Handle popstate event when navigating back/forward in the history
 window.addEventListener('popstate', (event) => {
   if (event.state && event.state.screen === 'home') {
-    document.querySelector('#sidebar').classList.add('sm:h-screen')
-    document.querySelector('#sidebar').classList.remove('absolute', 'h-screen')
+    document.querySelector('#sidebar').classList.add('sm:h-dvh')
+    document.querySelector('#sidebar').classList.remove('absolute', 'h-dvh')
     document.querySelector('#sidebarCloseWrapper').classList.add('hidden')
   }
   else {

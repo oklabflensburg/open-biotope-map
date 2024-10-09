@@ -15,8 +15,8 @@
     <link href="main.css" rel="stylesheet">
 </head>
 
-<body class="relative flex justify-center flex-col h-screen w-full">
-  <div class="relative sm:flex sm:flex-row w-full h-screen overflow-hidden">
+<body class="relative flex justify-center flex-col h-dvh w-full">
+  <div class="relative sm:flex sm:flex-row w-full h-dvh overflow-hidden">
     <div id="sidebarCloseWrapper" class="fixed right-3 top-3 z-1300 sm:hidden">
       <a id="sidebarCloseButton" class="flex justify-center items-center relative inline-block shadow-md bg-gray-200 text-sky-900 hover:bg-gray-300 focus:bg-gray-300 active:bg-gray-300 rounded-full w-8 h-8 cursor-pointer font-bold" role="button">
         <svg class="h-7 w-7 inline" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -25,14 +25,14 @@
       </a>
     </div>
 
-    <div class="h-screen w-full flex flex-col">
-      <div id="map" class="h-[95vh] w-full"></div>
+    <div class="h-dvh flex flex-col w-full xs:w-5/12 sm:w-6/12 md:w-7/12 lg:w-8/12 xl:w-9/12">
+      <div id="map" class="h-[95dvh] w-full"></div>
       <footer class="grow w-full bg-gray-200 border-t md:border-t border-gray-300 text-sm flex justify-center items-center">
         <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html">Impressum</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./impressum.html#privacypolicy">Datenschutzerklärung</a> <span class="inline-block text-gray-700 px-3">|</span> <a class="inline-block text-gray-700 hover:text-blue-800 focus:text-blue-800" href="./lizenz.html">Lizenz</a>
       </footer>
     </div>
 
-    <div id="sidebar" class="absolute left-0 bottom-0 h-screen sm:block sm:relative w-full xs:w-7/12 sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 overflow-scroll bg-gray-100 z-1200">
+    <div id="sidebar" class="absolute left-0 bottom-0 h-dvh sm:block sm:relative w-full xs:w-7/12 sm:w-6/12 md:w-5/12 lg:w-4/12 xl:w-3/12 overflow-scroll bg-gray-100 z-1200">
       <div id="sidebarHeader" class="py-2 px-3 mb-4 lg:mb-8">
         <h1 class="tracking-normal leading-normal font-bold text-2xl md:text-3xl lg:text-4xl mb-1">Biotopkartierung</h1>
         <h2><a href="/" class="text-xl md:text-2xl text-gray-700 hover:text-blue-700 focus:text-blue-800" title="Schleswig-Holstein">Schleswig-Holstein</a></h2>
