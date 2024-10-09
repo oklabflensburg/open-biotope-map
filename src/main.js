@@ -47,9 +47,12 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
   }
 
-  if (data['valuable_biotope'].length > 1) {
-    detailOutput += `<li><strong>Wertbiotop</strong><br>${data['valuable_biotope']}</li>`
+  /*
+  if (data['valuable_biotope'] !== undefined) {
+    valuableBiotope = parseInt(data['valuable_biotope']) !== 0 ? 'Ja' : 'Nein'
+    detailOutput += `<li><strong>Wertbiotop</strong><br>${valuableBiotope}</li>`
   }
+  */
 
   if (data['mapping_origin'].length > 1) {
     detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}</li>`
@@ -60,7 +63,9 @@ function renderBiotopeMeta(data) {
   }
 
   if (data['shape_area'] > 0) {
-    detailOutput += `<li><strong>Fläche</strong><br>${data['shape_area']}</li>`
+    let hectar = parseInt(data['shape_area']) / 10000
+    hectar = hectar.toFixed(2)
+    detailOutput += `<li><strong>Fläche</strong><br>${hectar} ha</li>`
   }
 
   document.querySelector('#detailList').innerHTML = detailOutput
