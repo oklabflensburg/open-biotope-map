@@ -20,6 +20,23 @@ var zoomControl = L.control.zoom({
 }).addTo(map)
 
 
+function formatPlaceName(placeName) {
+  return placeName.replace(', Stadt', '')
+}
+
+
+function formatToHectar(number) {
+  let hectar = Number(number) / 10000
+
+  hectar = new Intl.NumberFormat('de-DE', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(hectar)
+
+  return hectar
+}
+
+
 function renderBiotopeMeta(data) {
   if (currentLayer) {
     map.removeLayer(currentLayer)
@@ -59,12 +76,29 @@ function renderBiotopeMeta(data) {
   }
 
   if (data['place_name'].length > 1) {
-    detailOutput += `<li><strong>Gemeinde</strong><br>${data['place_name']}</li>`
+    const placeNamesArray = data['place_name'].split(';')
+    const placeNamesEntries = placeNamesArray.length
+    let placeNameKey = 'Gemeinde'
+    let placeNamesOutput = ''
+
+    placeNamesArray.forEach((placeName) => {
+      if (placeNamesEntries > 1) {
+        placeNamesOutput += `<li class="ml-4 list-dash">${formatPlaceName(placeName)}</li>`
+      }
+      else {
+        placeNamesOutput = `<li>${formatPlaceName(placeName)}</li>`
+      }
+    })
+
+    if (placeNamesEntries > 1) {
+      placeNameKey += 'n'
+    }
+
+    detailOutput += `<li><strong>${placeNameKey}</strong><br><ul>${placeNamesOutput}</ul></li>`
   }
 
   if (data['shape_area'] > 0) {
-    let hectar = parseInt(data['shape_area']) / 10000
-    hectar = hectar.toFixed(2)
+    const hectar = formatToHectar(data['shape_area'])
     detailOutput += `<li><strong>Fläche</strong><br>${hectar} ha</li>`
   }
 

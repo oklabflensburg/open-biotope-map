@@ -38,6 +38,10 @@ html, body {
   border-spacing: 5em;
 }
 
+.list-dash {
+  list-style-type: '- '
+}
+
 .list-circle {
   list-style-type: circle;
 }
