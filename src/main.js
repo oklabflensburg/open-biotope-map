@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     attribution: '&copy; <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU" target="_blank">LfU SH</a> | &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
   }).addTo(map)
 
-  L.tileLayer('https://tiles.oklabflensburg.de/bksh/{z}/{x}/{y}.png', {
+  L.tileLayer('https://tiles.oklabflensburg.de/bksh2/{z}/{x}/{y}.png', {
     opacity: 0.8,
     maxZoom: 20,
     maxNativeZoom: 20
