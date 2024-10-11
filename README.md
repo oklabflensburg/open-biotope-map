@@ -90,6 +90,14 @@ psql -U oklab -h localhost -d oklab -p 5432 < data/biotop_meta_schema.sql
 ```
 
 
+## Importieren der Maritime Daten Ostsee LRT 1110 und 1170
+
+```sh
+wget https://opendata.schleswig-holstein.de/data/llur51/Marine_Daten_Ostsee_LRT_1110_und_1170.zip
+unzip Marine_Daten_Ostsee_LRT_1110_und_1170.zip
+ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs Maritim_Daten_Ostsee_LRT_1110_und_1170.prj -t_srs EPSG:4326 Maritim_Daten_Ostsee_LRT_1110_und_1170.shp -nlt POLYGON -nln sh_maritime_baltic -overwrite -skipfailures
+```
+
 
 ## Importieren der Biotopkartierung
 
