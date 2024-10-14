@@ -106,7 +106,7 @@ mkdir bksh
 cd bksh
 wget https://opendata.schleswig-holstein.de/data/lfu51/SH4_BKSH_Flaechen_gesamt.zip
 unzip SH4_BKSH_Flaechen_gesamt.zip
-ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs SH4_BKSH_Flaechen_gesamt.prj -t_srs EPSG:4326 SH4_BKSH_Flaechen_gesamt.shp  -nlt POLYGON -nln sh_biotop -overwrite -skipfailures -update
+ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs SH4_BKSH_Flaechen_gesamt.prj -t_srs EPSG:4326 SH4_BKSH_Flaechen_gesamt.shp -nlt MULTIPOLYGON -nln sh_biotop -overwrite -update
 ```
 
 
