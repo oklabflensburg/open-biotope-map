@@ -110,6 +110,16 @@ ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -l
 ```
 
 
+## Importieren der Kartierkulisse
+
+> Die Kartierkulisse dient lediglich der Übersicht, welche Flächen im Rahmen der landeswieten Biotopkartierung 2014 bis 2020 begutachtet wurden.
+
+```sh
+wget https://opendata.schleswig-holstein.de/data/llur51/Kartierkulisse_BKSH_Flaechen_Gesamt.zip
+unzip Kartierkulisse_BKSH_Flaechen_Gesamt.zip
+ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs Kartierkulisse_BKSH_Flaechen_Gesamt.prj  -t_srs EPSG:4326 Kartierkulisse_BKSH_Flaechen_Gesamt.shp -nlt MULTIPOLYGON -nln sh_biotop_kulisse -overwrite -update
+```
+
 ## Importieren der Biotoptypen
 
 ```
