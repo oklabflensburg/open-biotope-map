@@ -90,7 +90,7 @@ psql -U oklab -h localhost -d oklab -p 5432 < data/biotop_meta_schema.sql
 ```
 
 
-## Importieren der Maritime Daten Ostsee LRT 1110 und 1170
+## Importieren der Maritimen Daten Schleswig-Holstein
 
 ```sh
 wget https://opendata.schleswig-holstein.de/data/llur51/Marine_Daten_Ostsee_LRT_1110_und_1170.zip
@@ -99,7 +99,7 @@ ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -l
 ```
 
 
-## Importieren der Biotopkartierung
+## Importieren der Biotopkartierung Schleswig-Holstein
 
 ```
 mkdir bksh
@@ -110,7 +110,7 @@ ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -l
 ```
 
 
-## Importieren der Kartierkulisse
+## Importieren der Kartierkulisse Schleswig-Holstein
 
 > Die Kartierkulisse dient lediglich der Übersicht, welche Flächen im Rahmen der landeswieten Biotopkartierung 2014 bis 2020 begutachtet wurden.
 
@@ -119,6 +119,16 @@ wget https://opendata.schleswig-holstein.de/data/llur51/Kartierkulisse_BKSH_Flae
 unzip Kartierkulisse_BKSH_Flaechen_Gesamt.zip
 ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs Kartierkulisse_BKSH_Flaechen_Gesamt.prj  -t_srs EPSG:4326 Kartierkulisse_BKSH_Flaechen_Gesamt.shp -nlt MULTIPOLYGON -nln sh_biotop_kulisse -overwrite -update
 ```
+
+
+## Importieren des Biotopkataster Hamburg
+
+```
+wget https://opendata.schleswig-holstein.de/data/lfu51/SH4_BKSH_Flaechen_gesamt.zip
+unzip Biotopkataster_HH_2018-11-16.zip
+ogr2ogr -f "PostgreSQL" PG:"host=localhost port=5432 dbname=oklab user=oklab" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs EPSG:25832 -t_srs EPSG:4326 biotopkataster_hh_2018-11-28.gml -overwrite -update -oo GML_ATTRIBUTES_TO_OGR_FIELDS=YES
+```
+
 
 ## Importieren der Biotoptypen
 
