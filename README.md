@@ -124,7 +124,7 @@ ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -l
 ## Importieren des Biotopkataster Hamburg
 
 ```
-wget https://opendata.schleswig-holstein.de/data/lfu51/SH4_BKSH_Flaechen_gesamt.zip
+wget https://daten-hamburg.de/umwelt_klima/biotopkataster/Biotopkataster_HH_2018-11-16.zip
 unzip Biotopkataster_HH_2018-11-16.zip
 ogr2ogr -f "PostgreSQL" PG:"host=localhost port=5432 dbname=oklab user=oklab" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs EPSG:25832 -t_srs EPSG:4326 biotopkataster_hh_2018-11-28.gml -overwrite -update -oo GML_ATTRIBUTES_TO_OGR_FIELDS=YES
 ```
