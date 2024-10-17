@@ -26,6 +26,18 @@ CREATE TABLE IF NOT EXISTS sh_biotop_meta (
 );
 
 
+
+-- HILFSTABELLE METADATEN BIOTOPSCHLÜSSEL HAMBURG
+DROP TABLE IF EXISTS hh_biotop_meta CASCADE;
+
+CREATE TABLE IF NOT EXISTS hh_biotop_meta (
+  id SERIAL,
+  code VARCHAR,
+  designation VARCHAR,
+  PRIMARY KEY(id)
+);
+
+
 -- INDEX
 CREATE UNIQUE INDEX IF NOT EXISTS sh_biotop_meta_code_idx ON sh_biotop_meta(code);
 CREATE UNIQUE INDEX IF NOT EXISTS sh_biotop_origin_code_idx ON sh_biotop_origin(code);

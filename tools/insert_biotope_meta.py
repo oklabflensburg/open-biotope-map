@@ -44,7 +44,25 @@ def connect_database(env_path):
         sys.exit(1)
 
 
-def insert_row(cur, row):
+def insert_row_hh(cur, row):
+    code = row['code']
+    designation = row['designation']
+
+    sql = '''
+        INSERT INTO hh_biotop_meta (code, designation) VALUES (%s, %s) RETURNING id
+    '''
+
+    try:
+        cur.execute(sql, (code, designation))
+
+        last_inserted_id = cur.fetchone()[0]
+
+        log.info(f'inserted {code} with id {last_inserted_id}')
+    except Exception as e:
+        log.error(e)
+
+
+def insert_row_sh(cur, row):
     code = row['code']
     designation = row['designation']
     bundesnaturschutzgesetz_30 = row['bundesnaturschutzgesetz_30']
@@ -70,23 +88,27 @@ def insert_row(cur, row):
         log.error(e)
 
 
-def load_data(conn, source_path):
+def load_data(conn, federal_state, source_path):
     cur = conn.cursor()
 
     with open(source_path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
-    
-        for row in reader:
-            insert_row(cur, row)
+
+        if federal_state == 'hh':
+            for row in reader:
+                insert_row_hh(cur, row)
+        elif federal_state == 'sh':
+            for row in reader:
+                insert_row_sh(cur, row)
 
 
 @click.command()
 @click.option('--env', '-e', type=str, required=True, help='Set your local dot env path')
-@click.option('--table', '-t', type=str, required=True, help='Set destination table name')
+@click.option('--state', '-S', type=str, required=True, help='Set destination state short name')
 @click.option('--source', '-s', type=str, required=True, help='Set source path to your csv')
 @click.option('--verbose', '-v', is_flag=True, help='Print more verbose output')
 @click.option('--debug', '-d', is_flag=True, help='Print detailed debug output')
-def main(env, source, table, verbose, debug):
+def main(env, source, state, verbose, debug):
     if debug:
         log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
     if verbose:
@@ -99,7 +121,7 @@ def main(env, source, table, verbose, debug):
     log.info(f'your system recursion limit: {recursion_limit}')
 
     conn = connect_database(env)
-    load_data(conn, Path(source))
+    load_data(conn, state, Path(source))
 
 
 if __name__ == '__main__':
