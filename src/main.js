@@ -64,13 +64,6 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
   }
 
-  /*
-  if (data['valuable_biotope'] !== undefined) {
-    valuableBiotope = parseInt(data['valuable_biotope']) !== 0 ? 'Ja' : 'Nein'
-    detailOutput += `<li><strong>Wertbiotop</strong><br>${valuableBiotope}</li>`
-  }
-  */
-
   if (data['mapping_origin'].length > 1) {
     detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}</li>`
   }
@@ -102,7 +95,24 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Fläche</strong><br>${hectar} ha</li>`
   }
 
-  document.querySelector('#detailList').innerHTML = detailOutput
+  const detailList = document.querySelector('#detailList')
+  const ribbonValuableBiotope = document.querySelector('#ribbonElement')
+
+  if (ribbonValuableBiotope) {
+    ribbonValuableBiotope.remove()
+  }
+
+  if (data['valuable_biotope'] !== undefined && data['valuable_biotope'] === 1) {
+    let ribbonElement = document.createElement('div')
+    let ribbonTextNode = document.createTextNode('Wertbiotop')
+
+    ribbonElement.id = 'ribbonElement'
+    ribbonElement.append(ribbonTextNode)
+    ribbonElement.classList.add('ribbon', 'top-2', 'absolute', 'text-base', 'text-zinc-900', 'font-mono', 'bg-emerald-200', 'tracking-normal', 'ps-2.5', 'pe-3.5')
+    detailList.parentNode.insertBefore(ribbonElement, detailList)
+  }
+
+  detailList.innerHTML = detailOutput
   document.querySelector('#sidebar').classList.remove('hidden')
   document.querySelector('#sidebar').classList.add('absolute')
   document.querySelector('#about').classList.add('hidden')
@@ -115,7 +125,14 @@ function cleanBiotopeMeta() {
     map.removeLayer(currentLayer)
   }
 
-  document.querySelector('#detailList').innerHTML = ''
+  const detailList = document.querySelector('#detailList')
+  const ribbonValuableBiotope = document.querySelector('#ribbonElement')
+
+  if (ribbonValuableBiotope) {
+    ribbonValuableBiotope.remove()
+  }
+
+  detailList.innerHTML = ''
   document.querySelector('#sidebar').classList.add('hidden')
   document.querySelector('#sidebar').classList.remove('absolute')
   document.querySelector('#about').classList.remove('hidden')
@@ -142,7 +159,7 @@ function fetchBiotopeMeta(lat, lng) {
 
 
 function updateScreen(screen) {
-  const title = 'Stadtplan der Denkmalliste Flensburg'
+  const title = 'Biotopkartierung Schleswig-Holstein'
 
   if (screen === 'home') {
     document.querySelector('title').innerHTML = title
@@ -171,13 +188,14 @@ document.addEventListener('DOMContentLoaded', function () {
   L.tileLayer('https://tiles.oklabflensburg.de/sgm/{z}/{x}/{y}.png', {
     maxZoom: 20,
     tileSize: 256,
-    attribution: '&copy; <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU" target="_blank">LfU SH</a> | &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
   }).addTo(map)
 
   L.tileLayer('https://tiles.oklabflensburg.de/bksh/{z}/{x}/{y}.png', {
     opacity: 0.8,
     maxZoom: 20,
-    maxNativeZoom: 20
+    maxNativeZoom: 20,
+    attribution: 'Daten &copy; <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU" target="_blank" rel="dc:rights">LfU SH</a>/<a href="https://www.govdata.de/dl-de/by-2-0" target="_blank" rel="dc:rights">dl-de/by-2-0</a>'
   }).addTo(map)
 
   map.on('click', function (e) {
@@ -185,6 +203,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const lng = e.latlng.lng
 
     fetchBiotopeMeta(lat, lng)
+  })
+
+  document.querySelector('#sidebarContentCloseButton').addEventListener('click', function (e) {
+    e.preventDefault()
+
+    cleanBiotopeMeta()
   })
 
   document.querySelector('#sidebarCloseButton').addEventListener('click', function (e) {
