@@ -49,7 +49,7 @@ def insert_row(cur, row):
     description = row['description']
 
     sql = '''
-        INSERT INTO sh_biotop_origin (code, description) VALUES (%s, %s) RETURNING id
+        INSERT INTO sh_biotope_origin (code, description) VALUES (%s, %s) RETURNING id
     '''
 
     try:

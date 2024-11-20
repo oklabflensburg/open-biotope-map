@@ -49,7 +49,7 @@ def insert_row_hh(cur, row):
     designation = row['designation']
 
     sql = '''
-        INSERT INTO hh_biotop_meta (code, designation) VALUES (%s, %s) RETURNING id
+        INSERT INTO hh_biotope_meta (code, designation) VALUES (%s, %s) RETURNING id
     '''
 
     try:
@@ -72,7 +72,7 @@ def insert_row_sh(cur, row):
     biotoptypen_code = row['biotoptypen_code']
 
     sql = '''
-        INSERT INTO sh_biotop_meta (code, designation, bundesnaturschutzgesetz_30,
+        INSERT INTO sh_biotope_meta (code, designation, bundesnaturschutzgesetz_30,
         bundesnaturschutzgesetz_21, biotopverordnung, ffh_lebensraumtypen, biotoptypen_code)
         VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id
     '''
