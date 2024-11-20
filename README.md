@@ -86,7 +86,7 @@ DB_PORT=5432
 Run sql statements inside `open-biotope-map` root directory
 
 ```
-psql -U oklab -h localhost -d oklab -p 5432 < data/biotop_meta_schema.sql
+psql -U oklab -h localhost -d oklab -p 5432 < data/biotope_meta_schema.sql
 ```
 
 
@@ -106,7 +106,7 @@ mkdir bksh
 cd bksh
 wget https://opendata.schleswig-holstein.de/data/lfu51/SH4_BKSH_Flaechen_gesamt.zip
 unzip SH4_BKSH_Flaechen_gesamt.zip
-ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs SH4_BKSH_Flaechen_gesamt.prj -t_srs EPSG:4326 SH4_BKSH_Flaechen_gesamt.shp -nlt MULTIPOLYGON -nln sh_biotop -overwrite -update
+ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs SH4_BKSH_Flaechen_gesamt.prj -t_srs EPSG:4326 SH4_BKSH_Flaechen_gesamt.shp -nlt MULTIPOLYGON -nln sh_biotope -overwrite -update
 ```
 
 
@@ -117,7 +117,7 @@ ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -l
 ```sh
 wget https://opendata.schleswig-holstein.de/data/llur51/Kartierkulisse_BKSH_Flaechen_Gesamt.zip
 unzip Kartierkulisse_BKSH_Flaechen_Gesamt.zip
-ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs Kartierkulisse_BKSH_Flaechen_Gesamt.prj  -t_srs EPSG:4326 Kartierkulisse_BKSH_Flaechen_Gesamt.shp -nlt MULTIPOLYGON -nln sh_biotop_kulisse -overwrite -update
+ogr2ogr -f "PostgreSQL" PG:"dbname=oklab user=oklab port=5432 host=localhost" -lco GEOMETRY_NAME=geom -lco SPATIAL_INDEX=GIST -lco PRECISION=NO -s_srs Kartierkulisse_BKSH_Flaechen_Gesamt.prj  -t_srs EPSG:4326 Kartierkulisse_BKSH_Flaechen_Gesamt.shp -nlt MULTIPOLYGON -nln sh_biotope_kulisse -overwrite -update
 ```
 
 
