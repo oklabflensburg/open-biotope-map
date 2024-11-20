@@ -39,8 +39,8 @@ html, body {
 }
 
 .ribbon {
-  --f: .5em; /* control the folded part*/
-  --r: .8em; /* control the ribbon shape */
+  --f: .5em;
+  --r: .8em;
 
   right: calc(-1*var(--f));
   line-height: 1.8;
