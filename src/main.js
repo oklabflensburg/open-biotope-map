@@ -25,6 +25,19 @@ function formatPlaceName(placeName) {
 }
 
 
+function formatDateString(dateString) {
+  const date = new Date(dateString)
+
+  const germanDate = date.toLocaleDateString('de-DE', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })
+
+  return germanDate
+}
+
+
 function formatToHectar(number) {
   let hectar = Number(number) / 10000
 
@@ -42,13 +55,23 @@ function renderBiotopeMeta(data) {
     map.removeLayer(currentLayer)
   }
 
-  const feature = JSON.parse(data['geojson'])
+  const geoJsonData = {
+    'type': 'FeatureCollection',
+    'features': [{
+      'type': 'Feature',
+      'geometry': {
+        'type': data['geojson']['type'],
+        'coordinates': data['geojson']['coordinates']
+      },
+      'properties': {}
+    }]
+  }
 
-  currentLayer = L.geoJSON(feature, {
+  currentLayer = L.geoJSON(geoJsonData, {
     style: {
-      'color': '#333',
-      'weight': 2,
-      'fillOpacity': 0.1
+      color: '#333',
+      weight: 2,
+      fillOpacity: 0.1
     }
   }).addTo(map)
 
@@ -62,6 +85,12 @@ function renderBiotopeMeta(data) {
 
   if (data['description'] !== null) {
     detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
+  }
+
+  if (data['mapping_date'] !== null) {
+    const dateString = formatDateString(data['mapping_date'])
+
+    detailOutput += `<li><strong>Kartierdatum</strong><br>${dateString}</li>`
   }
 
   if (data['mapping_origin'].length > 1) {
