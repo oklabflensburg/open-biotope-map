@@ -4,7 +4,8 @@ DROP TABLE IF EXISTS sh_biotope_origin CASCADE;
 CREATE TABLE IF NOT EXISTS sh_biotope_origin (
   id SERIAL PRIMARY KEY,
   code VARCHAR,
-  description VARCHAR
+  description VARCHAR,
+  remark VARCHAR
 );
 
 

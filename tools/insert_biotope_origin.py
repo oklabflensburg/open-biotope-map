@@ -46,14 +46,15 @@ def connect_database(env_path):
 
 def insert_row(cur, row):
     code = row['code']
-    description = row['description']
+    description = row['description'] if row['description'] else None
+    remark = row['remark'] if row['remark'] else None
 
     sql = '''
-        INSERT INTO sh_biotope_origin (code, description) VALUES (%s, %s) RETURNING id
+        INSERT INTO sh_biotope_origin (code, description, remark) VALUES (%s, %s, %s) RETURNING id
     '''
 
     try:
-        cur.execute(sql, (code, description))
+        cur.execute(sql, (code, description, remark))
 
         last_inserted_id = cur.fetchone()[0]
 

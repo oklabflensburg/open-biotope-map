@@ -1,25 +1,28 @@
-code,description
-"BK","Biotopkartierung 2015-2019"
-"BK_LLUR","Biotopkartierung 2015-2019 vom LLUR korrigierte Daten"
-"WGL14","Wertgrünland 2014"
-"WGL14_LLUR","Wertgrünland 2014 vom LLUR korrigierte Daten"
-"SEEN","Seenkartierung 2015-x"
-"SH2","Importierte Datensätze (08.2021) aus dem Register gesetzlich geschützter Biotope."
-"LFK","Importierte Datensätze der Klein- und Stillgewässer aus dem Landwirtschaftlichen Flächenkataster."
-"LFK_LLUR","Importierte Datensätze der Klein- und Stillgewässer aus dem Landwirtschaftlichen Flächenkataster. Vom LLUR korrigierte Daten"
-"WGL17_BK","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Biotopkartierung 2015-2019"
-"WGL17_BK_LLUR","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Biotopkartierung 2015-2019 vom LLUR korrigierte Daten"
+code,description,remark
+"BK","Datensatz stammt aus der BK Phase 2 (2015-2020)",
+"BK_LLUR","Datensatz stammt aus der BK Phase 2 (2015-2020)","Vom LLUR/LfU korrigierte Daten"
+"WGL14","Datensatz stammt aus der BK Phase 1 (Wertgrünlandkartierung 2014, WGL)","Wichtiger Hinweis: Aus der Wertgrünlandkartierung sind im vorliegenden Geodatensatz ausschließlich die Flächen bzw. Geometrien mit den zugehörigen Datensätzen abgelegt, die den Status als Wertbiotop erfüllen"
+"WGL14_LLUR","Datensatz stammt aus der BK Phase 1 (Wertgrünlandkartierung 2014, WGL)","Vom LLUR/LfU korrigierte Daten. Wichtiger Hinweis: Aus der Wertgrünlandkartierung sind im vorliegenden Geodatensatz ausschließlich die Flächen bzw. Geometrien mit den zugehörigen Datensätzen abgelegt, die den Status als Wertbiotop erfüllen"
+"SEEN","Datensatz stammt aus dem eigenständigen Projekt WRRL-Seenmonitoring"
+"SH2","Importierte Datensätze aus dem Register gesetzlich geschützter Biotope. Die kartierten Biotope wurden zum Teil durch Mitarbeiter des LLUR erfasst. Zum Teil wurden Daten aus anderen Kartierungen (z. B. FFH-Lebensraumtypen-Kartierung, Hochmoorkartierung außerhalb FFH-Gebieten, Moorwald- und Auwaldkartierung, Salzwiesenkartierung des NPA, Waldbiotopkartierung in Landesforsten, Seenkartierung des LLUR Abt. 4, Kartierung der Standortübungsplätze, Landschaftspläne u. a.) nach Prüfung durch das LLUR in den Datenbestand übernommen. Zum Teil sind die Daten vor 2014 erfasst worden.",
+"LFK","Die Daten dieser Herkunft entstammen einer Luftbild-gestützten Auswertung im Rahmen des Landwirtschaftlichen Flächenkatasters (LFK) und umfassen innerhalb landwirtschaftlicher Nutzflächen gelegene Stillgewässer gem. VO-Nr. 1b und Kleingewässer gem. VO-Nr. 7. Die ebenfalls im Rahmen des LFK erfassten Knicks- und Feldhecken liegen in einem gesonderten Linien-Shape vor.",
+"LFK_LLUR","Die Daten dieser Herkunft entstammen einer Luftbild-gestützten Auswertung im Rahmen des Landwirtschaftlichen Flächenkatasters (LFK) und umfassen innerhalb landwirtschaftlicher Nutzflächen gelegene Stillgewässer gem. VO-Nr. 1b und Kleingewässer gem. VO-Nr. 7. Die ebenfalls im Rahmen des LFK erfassten Knicks- und Feldhecken liegen in einem gesonderten Linien-Shape vor.","Vom LLUR/LfU korrigierte Daten"
+"WGL17_BK","Datensatz stammt aus der BK - Phase 1. Nachträglich wurde in diesem entweder eine Korrektur hinsichtlich der Geometrien durch das LLUR durchgeführt oder es wurde ein zuvor eingetragener Status als "Wertgrünland (WGL)" im Sinne des in 2016 unter den gesetzlichen Biotopschutz gestellten "arten- und strukturreichen Dauergrünlands" wieder entzogen, weil in dem Datensatz die abschließend verbindlich festgelegte Kennartenzahl nicht erreicht wird oder die erforderliche regelmäßige Verteilung des wertgebenden Arteninventars innerhalb der Fläche insgesamt als Grenzfall beurteilt wurde."
+"WGL17_BK_LLUR","Datensatz stammt aus der BK - Phase 1. Nachträglich wurde in diesem entweder eine Korrektur hinsichtlich der Geometrien durch das LLUR durchgeführt oder es wurde ein zuvor eingetragener Status als "Wertgrünland (WGL)" im Sinne des in 2016 unter den gesetzlichen Biotopschutz gestellten "arten- und strukturreichen Dauergrünlands" wieder entzogen, weil in dem Datensatz die abschließend verbindlich festgelegte Kennartenzahl nicht erreicht wird oder die erforderliche regelmäßige Verteilung des wertgebenden Arteninventars innerhalb der Fläche insgesamt als Grenzfall beurteilt wurde.","Vom LLUR/LfU korrigierte Daten"
 "WGL17_WGL14","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Wertgrünland 2014"
-"WGL17_WGL14_LLUR","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Wertgrünland 2014 vom LLUR korrigierte Daten"
-"WGL17_SEEN","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Seen 2015-x"
-"WGL17_SN-STEINBURG","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus \"Schönes Steinburg\""
-"WGL17_BK-NICHTBETR","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Biotopkartierung 2015-2019 - Nichtbetretene Flächen"
-"SALZWIESEN","Salzwiesenkartierung 2017"
-"SALZWIESEN_LLUR","Salzwiesenkartierung 2017 vom LLUR korrigierte Daten"
-"NMS","Neumünster Stadtkartierung 2016-2017"
-"NMS_LLUR","Neumünster Stadtkartierung 2016-2017 vom LLUR korrigierte Daten"
-"INSELN","2018 kartierte Inseln"
-"INSELN_LLUR","2018 kartierte Inseln vom LLUR korrigierte Daten"
+"WGL17_WGL14_LLUR","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Wertgrünland 2014","Vom LLUR/LfU korrigierte Daten"
+"WGL17_SEEN","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Seen 2015-x",
+"WGL17_SN-STEINBURG","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus 'Schönes Steinburg'",
+"WGL17_BK-NICHTBETR","Wertgrünland 2017 Neukartierung; Ursprungsdaten stammen aus Biotopkartierung 2015-2019 - Nichtbetretene Flächen",
+"SALZWIESEN","Datensatz stammt aus der eigenständigen, vom LKN beauftragten "Salzwiesen- und Dünenkartierung", die im Bereich des Nationalparks Schleswig-Holsteinisches Wattenmeer und in den angrenzenden Küstengebieten inkl. der nordfriesischen Inseln und Helgoland (NPV Tönning) durchgeführt wurde.",
+"SALZWIESEN_LLUR","Datensatz stammt aus der eigenständigen, vom LKN beauftragten "Salzwiesen- und Dünenkartierung", die im Bereich des Nationalparks Schleswig-Holsteinisches Wattenmeer und in den angrenzenden Küstengebieten inkl. der nordfriesischen Inseln und Helgoland (NPV Tönning) durchgeführt wurde.","Vom LLUR/LfU korrigierte Daten"
+"NMS","Neumünster Stadtkartierung 2016-2017",
+"NMS_LLUR","Neumünster Stadtkartierung 2016-2017","Vom LLUR/LfU korrigierte Daten"
+"INSELN","2018 kartierte Inseln",
+"INSELN_LLUR","2018 kartierte Inseln","Vom LLUR/LfU korrigierte Daten"
 "MARITIM","Maritime LRT, ohne Ostsee LRT 1110+1170"
-"MARITIM_LLUR","Maritime LRT, ohne Ostsee LRT 1110+1170 vom LLUR korrigierte Daten"
-"KNICK","Knickkartierung 2016-2019"
+"MARITIM_LLUR","Maritime LRT, ohne Ostsee LRT 1110+1170","Vom LLUR/LfU korrigierte Daten"
+"KNICK","Knickkartierung 2016-2019",
+"FFH",,
+"FFH-ZUSATZ",,
+"EXTERN",,
