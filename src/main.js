@@ -100,6 +100,10 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Herkunft (${data['mapping_origin']})</strong><br>${data['mapping_origin_description']}</li>`
   }
 
+  if (data['mapping_origin_remark'] !== null) {
+    detailOutput += `<li><strong>Hinweis</strong><br>${data['mapping_origin_remark']}</li>`
+  }
+
   if (data['place_name'] !== null && data['place_name'].length > 1) {
     const placeNamesArray = data['place_name'].split(';')
     const placeNamesEntries = placeNamesArray.length
