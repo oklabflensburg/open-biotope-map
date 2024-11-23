@@ -93,8 +93,11 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Kartierdatum</strong><br>${dateString}</li>`
   }
 
-  if (data['mapping_origin'].length > 1) {
+  if (data['mapping_origin'] !== null && data['mapping_origin_description'] === null) {
     detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}</li>`
+  }
+  else if (data['mapping_origin'] !== null && data['mapping_origin_description'] !== null) {
+    detailOutput += `<li><strong>Herkunft (${data['mapping_origin']})</strong><br>${data['mapping_origin_description']}</li>`
   }
 
   if (data['place_name'] !== null && data['place_name'].length > 1) {
