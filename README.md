@@ -166,6 +166,8 @@ This tool simplifies importing metadata such as:
 
 ### Import Steps:
 
+**Important:** Before copying the following line, ensure you replace the default database and username parameters with your own values.
+
 1. Run the SQL schema:
 
 ```bash
