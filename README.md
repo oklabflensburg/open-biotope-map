@@ -1,8 +1,8 @@
 # Biotope Mapping Map
 
-[![Lint CSS Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-css.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-css.yml)  
-[![Lint HTML Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-html.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-html.yml)  
-[![Lint JS Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-js.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-js.yml)  
+[![Lint CSS Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-css.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-css.yml)
+[![Lint HTML Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-html.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-html.yml)
+[![Lint JS Files](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-js.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lint-js.yml)
 [![Lighthouse CI](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/oklabflensburg/open-biotope-map/actions/workflows/lighthouse.yml)
 
 ![Screenshot of the interactive biotope map](https://raw.githubusercontent.com/oklabflensburg/open-biotope-map/main/screenshot_biotopkarte.webp)
@@ -14,7 +14,8 @@
 
 ## Background
 
-This interactive biotope map was inspired by field visits to the salt marshes and cliffs of Holnis along the Baltic Sea. The rich diversity of biotopes in this area sparked the idea of making the habitats of Schleswig-Holstein digitally accessible.  
+This interactive biotope map was inspired by field visits to the salt marshes and cliffs of Holnis along the Baltic Sea. The rich diversity of biotopes in this area sparked the idea of making the habitats of Schleswig-Holstein digitally accessible.
+
 > **Note:** This is an unofficial map, and the information displayed may be outdated.
 
 
@@ -23,7 +24,7 @@ This interactive biotope map was inspired by field visits to the salt marshes an
 
 ## Data Source
 
-The biotope mapping data is provided by the **Landesamt für Umwelt** (State Office for Environment) and can be downloaded from the Open Data Portal of Schleswig-Holstein. The map was developed by volunteer members of the OK Lab Flensburg.
+The biotope mapping data is provided by the [Landesamt für Umwelt](https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU) (LfU) and can be downloaded from the [Open Data Portal](https://opendata.schleswig-holstein.de/dataset/biotopkartierung-sh4-flachen-gesamt) of Schleswig-Holstein. The map was developed by volunteer members of the OK Lab Flensburg.
 
 
 ---
@@ -41,39 +42,51 @@ For information on data freshness, please refer to the project's website.
 
 ### Prerequisites
 
-Ensure the following dependencies are installed before proceeding:
-- **PostgreSQL** (with PostGIS)
+Before you begin, ensure the following dependencies are installed on your system:
+
+- **PostgreSQL 16** (with PostGIS extension)
+- **Python 3** (including `pip` and `venv`)
 - **GDAL**
-- **Python 3**
-- **Node.js**
+- **Git** (with Git LFS)
 
-### Installation Steps
 
-1. Install the required dependencies and clone the repository:
+### Installation Steps (Ubuntu 24.01 LTS)
+
+Follow these steps to set up the project on Ubuntu 24.01 LTS:
+
+1. Install Required Dependencies
+
+Run the following commands to install the necessary system packages:
+
 ```bash
-sudo apt install wget git git-lfs python3 python3-pip python3-venv
-sudo apt install postgresql-16 postgis gdal-bin
+sudo apt update
+sudo apt install wget curl git git-lfs python3 python3-pip python3-venv postgresql-16 postgresql-postgis gdal-bin
+```
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-nvm install 20
+2. Clone the Repository
 
+Clone the project repository and navigate into its directory:
+
+```bash
 git clone https://github.com/oklabflensburg/open-biotope-map.git
 cd open-biotope-map
 ```
 
-2. Create a `.env` file in the root directory with the following content:
+3. Configure the Environment
 
-```env
+Create a `.env` file in the project’s root directory and populate it with the required configuration. Replace placeholder values with your actual data:
+
+```bash
 BASE_URL=http://localhost
-CONTACT_MAIL=mail@example.com
+CONTACT_MAIL=your-email@example.com
 CONTACT_PHONE="+49xx"
-PRIVACY_CONTACT_PERSON="Firstname Lastname"
-ADDRESS_NAME="Address Name"
-ADDRESS_STREET="Address Street"
-ADDRESS_HOUSE_NUMBER="House Number"
-ADDRESS_POSTAL_CODE="Postal Code"
-ADDRESS_CITY="City"
-DB_PASS=YOUR_PASSWORD_HERE
+PRIVACY_CONTACT_PERSON="Your Name"
+ADDRESS_NAME="Your Organization"
+ADDRESS_STREET="Your Street Name"
+ADDRESS_HOUSE_NUMBER="Your House Number"
+ADDRESS_POSTAL_CODE="Your Postal Code"
+ADDRESS_CITY="Your City"
+DB_PASS=your_database_password
 DB_HOST=localhost
 DB_USER=oklab
 DB_NAME=oklab
