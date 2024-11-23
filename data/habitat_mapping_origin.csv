@@ -1,6 +1,6 @@
 code,description,remark
-"BK","Datensatz stammt aus der BK Phase 2 (2015-2020)",
-"BK_LLUR","Datensatz stammt aus der BK Phase 2 (2015-2020)","Vom LLUR/LfU korrigierte Daten"
+"BK","Datensatz stammt aus der BK Phase 2 (2015 - 2020)",
+"BK_LLUR","Datensatz stammt aus der BK Phase 2 (2015 - 2020)","Vom LLUR/LfU korrigierte Daten"
 "WGL14","Datensatz stammt aus der BK Phase 1 (Wertgrünlandkartierung 2014, WGL)","Wichtiger Hinweis: Aus der Wertgrünlandkartierung sind im vorliegenden Geodatensatz ausschließlich die Flächen bzw. Geometrien mit den zugehörigen Datensätzen abgelegt, die den Status als Wertbiotop erfüllen"
 "WGL14_LLUR","Datensatz stammt aus der BK Phase 1 (Wertgrünlandkartierung 2014, WGL)","Vom LLUR/LfU korrigierte Daten. Wichtiger Hinweis: Aus der Wertgrünlandkartierung sind im vorliegenden Geodatensatz ausschließlich die Flächen bzw. Geometrien mit den zugehörigen Datensätzen abgelegt, die den Status als Wertbiotop erfüllen"
 "SEEN","Datensatz stammt aus dem eigenständigen Projekt WRRL-Seenmonitoring"
