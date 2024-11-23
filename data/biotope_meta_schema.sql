@@ -1,41 +1,52 @@
+-- HILFSTABELLE FFH LEBENSRAUMTYPEN DEUTSCHLAND
+-- Source: https://www.bfn.de/lebensraumtypen
+DROP TABLE IF EXISTS de_habitat_types CASCADE;
+
+CREATE TABLE IF NOT EXISTS de_habitat_types (
+  id SERIAL PRIMARY KEY,
+  code VARCHAR NOT NULL,
+  priority BOOLEAN NOT NULL,
+  description VARCHAR,
+  label VARCHAR
+);
+
+
+
 -- HILFSTABELLE HERKUNFT BIOTOPKARTIERUNG SCHLESWIG-HOLSTEIN
 DROP TABLE IF EXISTS sh_biotope_origin CASCADE;
 
 CREATE TABLE IF NOT EXISTS sh_biotope_origin (
   id SERIAL PRIMARY KEY,
-  code VARCHAR,
+  code VARCHAR NOT NULL,
   description VARCHAR,
   remark VARCHAR
 );
 
 
 
--- HILFSTABELLE METADATEN BIOTOPENCODE SCHLESWIG-HOLSTEIN
-DROP TABLE IF EXISTS sh_biotope_meta CASCADE;
+-- HILFSTABELLE METADATEN BIOTOPSCHLÜSSEL SCHLESWIG-HOLSTEIN
+DROP TABLE IF EXISTS sh_biotope_key CASCADE;
 
-CREATE TABLE IF NOT EXISTS sh_biotope_meta (
+CREATE TABLE IF NOT EXISTS sh_biotope_key (
   id SERIAL PRIMARY KEY,
-  code VARCHAR,
-  designation VARCHAR,
-  bundesnaturschutzgesetz_30 VARCHAR,
-  bundesnaturschutzgesetz_21 VARCHAR,
-  biotopverordnung VARCHAR,
-  ffh_lebensraumtypen VARCHAR,
-  biotoptypen_code VARCHAR
+  code VARCHAR NOT NULL,
+  designation VARCHAR
 );
 
 
 
 -- HILFSTABELLE METADATEN BIOTOPSCHLÜSSEL HAMBURG
-DROP TABLE IF EXISTS hh_biotope_meta CASCADE;
+DROP TABLE IF EXISTS hh_biotope_key CASCADE;
 
-CREATE TABLE IF NOT EXISTS hh_biotope_meta (
+CREATE TABLE IF NOT EXISTS hh_biotope_key (
   id SERIAL PRIMARY KEY,
-  code VARCHAR,
+  code VARCHAR NOT NULL,
   designation VARCHAR
 );
 
 
--- INDEX
-CREATE UNIQUE INDEX IF NOT EXISTS sh_biotope_meta_code_idx ON sh_biotope_meta(code);
-CREATE UNIQUE INDEX IF NOT EXISTS sh_biotope_origin_code_idx ON sh_biotope_origin(code);
+-- UNIQUE INDEX
+CREATE UNIQUE INDEX IF NOT EXISTS idx_hh_biotope_key_code ON hh_biotope_key(code);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_sh_biotope_key_code ON sh_biotope_key(code);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_sh_biotope_origin_code ON sh_biotope_origin(code);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_de_natura_2000_habitat_code ON de_habitat_types(code);

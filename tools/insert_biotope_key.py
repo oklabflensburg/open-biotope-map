@@ -49,7 +49,7 @@ def insert_row_hh(cur, row):
     designation = row['designation']
 
     sql = '''
-        INSERT INTO hh_biotope_meta (code, designation) VALUES (%s, %s) RETURNING id
+        INSERT INTO hh_biotope_key (code, designation) VALUES (%s, %s) RETURNING id
     '''
 
     try:
@@ -65,21 +65,13 @@ def insert_row_hh(cur, row):
 def insert_row_sh(cur, row):
     code = row['code']
     designation = row['designation']
-    bundesnaturschutzgesetz_30 = row['bundesnaturschutzgesetz_30']
-    bundesnaturschutzgesetz_21 = row['bundesnaturschutzgesetz_21']
-    biotopverordnung = row['biotopverordnung']
-    ffh_lebensraumtypen = row['ffh_lebensraumtypen']
-    biotoptypen_code = row['biotoptypen_code']
 
     sql = '''
-        INSERT INTO sh_biotope_meta (code, designation, bundesnaturschutzgesetz_30,
-        bundesnaturschutzgesetz_21, biotopverordnung, ffh_lebensraumtypen, biotoptypen_code)
-        VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING id
+        INSERT INTO sh_biotope_key (code, designation) VALUES (%s, %s) RETURNING id
     '''
 
     try:
-        cur.execute(sql, (code, designation, bundesnaturschutzgesetz_30,
-        bundesnaturschutzgesetz_21, biotopverordnung, ffh_lebensraumtypen, biotoptypen_code))
+        cur.execute(sql, (code, designation))
 
         last_inserted_id = cur.fetchone()[0]
 
