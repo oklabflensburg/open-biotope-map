@@ -93,11 +93,19 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Kartierdatum</strong><br>${dateString}</li>`
   }
 
+  if (data['habitat_type_1'] !== null && data['habitat_label_1'] !== null) {
+    detailOutput += `<li><strong>Lebensraumtyp I</strong><br>${data['habitat_type_1']}: ${data['habitat_label_1']}</li>`
+  }
+
+  if (data['habitat_type_2'] !== null && data['habitat_label_2'] !== null) {
+    detailOutput += `<li><strong>Lebensraumtyp II</strong><br>${data['habitat_type_2']}: ${data['habitat_label_2']}</li>`
+  }
+
   if (data['mapping_origin'] !== null && data['mapping_origin_description'] === null) {
     detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}</li>`
   }
   else if (data['mapping_origin'] !== null && data['mapping_origin_description'] !== null) {
-    detailOutput += `<li><strong>Herkunft (${data['mapping_origin']})</strong><br>${data['mapping_origin_description']}</li>`
+    detailOutput += `<li><strong>Herkunft</strong><br>${data['mapping_origin']}: ${data['mapping_origin_description']}</li>`
   }
 
   if (data['mapping_origin_remark'] !== null) {
