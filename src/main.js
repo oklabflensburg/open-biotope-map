@@ -7,13 +7,13 @@ const env = new Env()
 env.injectLinkContent('.contact-mail', 'mailto:', '', env.contactMail, 'E-Mail')
 
 
-const center = [54.79443515, 9.43205485]
+const center = [54.16457533, 9.92517113]
 
 let currentLayer = null
 
 var map = L.map('map', {
   zoomControl: false
-}).setView(center, 13)
+}).setView(center, 12)
 
 var zoomControl = L.control.zoom({
   position: 'bottomright'
@@ -161,10 +161,11 @@ function renderBiotopeMeta(data) {
   }
 
   detailList.innerHTML = detailOutput
-  document.querySelector('#sidebar').classList.remove('hidden')
-  document.querySelector('#sidebar').classList.add('absolute')
   document.querySelector('#about').classList.add('hidden')
+  document.querySelector('#sidebar').classList.add('absolute')
+  document.querySelector('#sidebar').classList.remove('hidden')
   document.querySelector('#sidebarContent').classList.remove('hidden')
+  document.querySelector('#sidebarCloseWrapper').classList.remove('block')
 }
 
 
@@ -207,7 +208,7 @@ function fetchBiotopeMeta(lat, lng) {
 
 
 function updateScreen(screen) {
-  const title = 'Biotopkartierung Schleswig-Holstein'
+  const title = 'Biotopkarte Schleswig-Holstein'
 
   if (screen === 'home') {
     document.querySelector('title').innerHTML = title
@@ -243,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     opacity: 0.8,
     maxZoom: 20,
     maxNativeZoom: 20,
-    attribution: 'Daten &copy; <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU" target="_blank" rel="dc:rights">LfU SH</a>/<a href="https://www.govdata.de/dl-de/by-2-0" target="_blank" rel="dc:rights">dl-de/by-2-0</a>'
+    attribution: '&copy; <a href="https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/LFU" target="_blank" rel="dc:rights">LfU SH</a>/<a href="https://www.govdata.de/dl-de/by-2-0" target="_blank" rel="dc:rights">dl-de/by-2-0</a>'
   }).addTo(map)
 
   map.on('click', function (e) {
@@ -253,42 +254,12 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchBiotopeMeta(lat, lng)
   })
 
-  document.querySelector('#sidebarContentCloseButton').addEventListener('click', function (e) {
-    e.preventDefault()
-
-    cleanBiotopeMeta()
-  })
-
   document.querySelector('#sidebarCloseButton').addEventListener('click', function (e) {
     e.preventDefault()
-
-    document.querySelector('#sidebar').classList.add('sm:h-dvh')
-    document.querySelector('#sidebar').classList.remove('absolute', 'h-dvh')
-    document.querySelector('#sidebarCloseWrapper').classList.add('hidden')
+    cleanBiotopeMeta()
 
     history.replaceState({ screen: 'home' }, '', '/')
   })
-
-
-  const layers = {
-    'layer1': L.tileLayer('https://tiles.oklabflensburg.de/nksh/{z}/{x}/{y}.png', {
-      opacity: 0.7,
-      maxZoom: 20,
-      maxNativeZoom: 20
-    })
-  }
-
-  window.toggleLayer = function (element) {
-    const layerName = element.id
-    const layer = layers[layerName]
-
-    if (element.checked && !map.hasLayer(layer)) {
-      map.addLayer(layer)
-    }
-    else if (map.hasLayer(layer)) {
-      map.removeLayer(layer)
-    }
-  }
 })
 
 
@@ -301,8 +272,6 @@ window.onload = () => {
 // Handle popstate event when navigating back/forward in the history
 window.addEventListener('popstate', (event) => {
   if (event.state && event.state.screen === 'home') {
-    document.querySelector('#sidebar').classList.add('sm:h-dvh')
-    document.querySelector('#sidebar').classList.remove('absolute', 'h-dvh')
     document.querySelector('#sidebarCloseWrapper').classList.add('hidden')
   }
   else {
