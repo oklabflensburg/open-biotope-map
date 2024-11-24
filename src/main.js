@@ -93,6 +93,10 @@ function renderBiotopeMeta(data) {
     detailOutput += `<li><strong>Kartierdatum</strong><br>${dateString}</li>`
   }
 
+  if (data['protection_reason'] !== null) {
+    detailOutput += `<li><strong>Schutzgrund</strong><br>${data['protection_reason']}</li>`
+  }
+
   if (data['habitat_type_1'] !== null && data['habitat_label_1'] !== null) {
     detailOutput += `<li><strong>Lebensraumtyp I</strong><br>${data['habitat_type_1']}: ${data['habitat_label_1']}</li>`
   }
