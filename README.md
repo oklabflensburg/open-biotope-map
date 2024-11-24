@@ -192,6 +192,31 @@ deactivate
 ---
 
 
+## Example SQL queries
+
+Query unique protection reasons with distinct and sort them human readable.
+
+```sql
+SELECT btschutz
+FROM (
+    SELECT DISTINCT btschutz,
+           REGEXP_REPLACE(btschutz, '[^0-9]', '', 'g')::INT AS numeric_part,
+           REGEXP_REPLACE(btschutz, '[0-9]', '', 'g') AS alphabetic_part
+    FROM (
+        SELECT b.btschutz_1 AS btschutz
+        FROM sh_biotope AS b
+        WHERE b.btschutz_1 IS NOT NULL
+        UNION ALL
+        SELECT b.btschutz_2 AS btschutz
+        FROM sh_biotope AS b
+        WHERE b.btschutz_2 IS NOT NULL
+    ) combined
+    WHERE btschutz IS NOT NULL
+) sorted
+ORDER BY numeric_part, alphabetic_part;
+```
+
+
 ## License
 
 This project is licensed under [CC0-1.0](LICENSE).
