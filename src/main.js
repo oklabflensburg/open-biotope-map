@@ -51,6 +51,10 @@ function formatToHectar(number) {
 
 
 function renderBiotopeMeta(data) {
+  document.querySelector('#sidebar').scrollTo({
+    top: 0
+  })
+
   if (currentLayer) {
     map.removeLayer(currentLayer)
   }
