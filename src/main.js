@@ -29,8 +29,8 @@ function formatDateString(dateString) {
   const date = new Date(dateString)
 
   const germanDate = date.toLocaleDateString('de-DE', {
-    day: 'numeric',
-    month: 'long',
+    day: '2-digit',
+    month: '2-digit',
     year: 'numeric'
   })
 
@@ -80,11 +80,11 @@ function renderBiotopeMeta(data) {
   let detailOutput = ''
 
   if (data['designation'].length > 1) {
-    detailOutput += `<li><strong>${data['code']}</strong><br>${data['designation']}</li>`
+    detailOutput += `<li><strong>Biotoptyp</strong><br>${data['designation']} (${data['code']})</li>`
   }
 
   if (data['description'] !== null) {
-    detailOutput += `<li><strong>Bemerkung</strong><br>${data['description']}</li>`
+    detailOutput += `<li><strong>Biotopbeschreibung</strong><br>${data['description']}</li>`
   }
 
   if (data['mapping_date'] !== null) {
@@ -94,15 +94,15 @@ function renderBiotopeMeta(data) {
   }
 
   if (data['protection_reason'] !== null) {
-    detailOutput += `<li><strong>Schutzgrund</strong><br>${data['protection_reason']}</li>`
+    detailOutput += `<li><strong>Schutz (BiotopV SH)</strong><br>${data['protection_reason']}</li>`
   }
 
   if (data['habitat_type_1'] !== null && data['habitat_label_1'] !== null) {
-    detailOutput += `<li><strong>Lebensraumtyp I</strong><br>${data['habitat_type_1']}: ${data['habitat_label_1']}</li>`
+    detailOutput += `<li><strong>FFH-Lebensraumtyp</strong><br>${data['habitat_label_1']} (${data['habitat_type_1']})</li>`
   }
 
   if (data['habitat_type_2'] !== null && data['habitat_label_2'] !== null) {
-    detailOutput += `<li><strong>Lebensraumtyp II</strong><br>${data['habitat_type_2']}: ${data['habitat_label_2']}</li>`
+    detailOutput += `<li><strong>Komplexbildung mit</strong><br>${data['habitat_type_2']}: ${data['habitat_label_2']}</li>`
   }
 
   if (data['mapping_origin'] !== null && data['mapping_origin_description'] === null) {
