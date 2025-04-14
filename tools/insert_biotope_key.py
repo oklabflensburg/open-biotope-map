@@ -97,10 +97,10 @@ def load_data(conn, federal_state, source_path):
 @click.command()
 @click.option('--env', '-e', type=str, required=True, help='Set your local dot env path')
 @click.option('--state', '-S', type=str, required=True, help='Set destination state short name')
-@click.option('--source', '-s', type=str, required=True, help='Set source path to your csv')
+@click.option('--src', '-s', type=str, required=True, help='Set source path to your csv')
 @click.option('--verbose', '-v', is_flag=True, help='Print more verbose output')
 @click.option('--debug', '-d', is_flag=True, help='Print detailed debug output')
-def main(env, source, state, verbose, debug):
+def main(env, src, state, verbose, debug):
     if debug:
         log.basicConfig(format='%(levelname)s: %(message)s', level=log.DEBUG)
     if verbose:
@@ -113,7 +113,7 @@ def main(env, source, state, verbose, debug):
     log.info(f'your system recursion limit: {recursion_limit}')
 
     conn = connect_database(env)
-    load_data(conn, state, Path(source))
+    load_data(conn, state, Path(src))
 
 
 if __name__ == '__main__':

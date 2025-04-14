@@ -181,10 +181,10 @@ cd tools
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-python3 insert_biotope_key.py --env ../.env --state hh --source ../data/biotoptypen_schluessel_hamburg.csv --verbose
-python3 insert_biotope_key.py --env ../.env --state sh --source ../data/biotoptypen_standardliste.csv --verbose
-python3 insert_biotope_origin.py --env ../.env --source ../data/habitat_mapping_origin.csv --verbose
-python3 insert_habitat_types.py --env ../.env --source ../data/ffh_habitat_types.csv --verbose
+python3 insert_biotope_key.py --env ../.env --state hh --src ../data/biotoptypen_schluessel_hamburg.csv --verbose
+python3 insert_biotope_key.py --env ../.env --state sh --src ../data/biotoptypen_standardliste.csv --verbose
+python3 insert_biotope_origin.py --env ../.env --src ../data/habitat_mapping_origin.csv --verbose
+python3 insert_habitat_types.py --env ../.env --src ../data/ffh_habitat_types.csv --verbose
 deactivate
 ```
 
