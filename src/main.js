@@ -238,7 +238,7 @@ function handleWindowSize() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  L.tileLayer('https://tiles.oklabflensburg.de/osm/{z}/{x}/{y}.png', {
+  L.tileLayer('https://tiles.oklabflensburg.de/gosm/{z}/{x}/{y}.png', {
     maxZoom: 20,
     tileSize: 256,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="dc:rights">OpenStreetMap</a> contributors'
